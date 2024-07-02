@@ -1,9 +1,10 @@
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
-
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +12,9 @@ export default defineConfig({
   integrations: [tailwind(), sitemap(), mdx(), pagefind()],
   markdown: {
     shikiConfig: {
-      theme: "css-variables",
-    },
+      theme: "css-variables"
+    }
   },
+  output: "server",
+  adapter: vercel()
 });
