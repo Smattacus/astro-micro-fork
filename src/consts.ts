@@ -1,11 +1,12 @@
 import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
-  TITLE: "Astro Micro",
-  DESCRIPTION: "Astro Micro is an accessible and lightweight blog.",
-  EMAIL: "trevortylerlee@gmail.com",
+  TITLE: "Pressure Off the Brain",
+  DESCRIPTION: "This is a small blog for technical subjects: Python. SystemVerilog. Digital Signal Processing. Semiconductors. Etc.",
+  EMAIL: "Smattacus@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
-  NUM_PROJECTS_ON_HOMEPAGE: 3,
+  NUM_PROJECTS_ON_HOMEPAGE: 2,
+  NUM_REVIEWS_ON_HOMEPAGE: 2,
 };
 
 export const HOME: Metadata = {
@@ -15,26 +16,27 @@ export const HOME: Metadata = {
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  DESCRIPTION: "A collection of articles grouped by subject matter.",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+    "Some projects I have done in the public realm in my spare time.",
 };
+
+export const REVIEWS: Metadata = {
+  TITLE: "Reviews",
+  DESCRIPTION: "Book reviews I have written."
+}
 
 export const SOCIALS: Socials = [
   {
-    NAME: "X (formerly Twitter)",
-    HREF: "https://twitter.com/boogerbuttcheeks",
-  },
-  {
     NAME: "GitHub",
-    HREF: "https://github.com/trevortylerlee",
+    HREF: "https://github.com/Smattacus",
   },
   {
     NAME: "LinkedIn",
-    HREF: "https://www.linkedin.com/in/trevortylerlee",
+    HREF: "https://www.linkedin.com/in/sean-w-mattingly",
   },
 ];
