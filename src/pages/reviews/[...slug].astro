@@ -1,0 +1,67 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import Link from "@components/Link.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("reviews"))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return projects.map((review) => ({
+    params: { slug: review.slug },
+    props: review,
+  }));
+}
+type Props = CollectionEntry<"reviews">;
+
+const review = Astro.props;
+const { Content, headings } = await review.render();
+---
+
+<Layout title={review.data.title} description={review.data.description}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/reviews">Back to book reviews</BackToPrevious>
+    </div>
+    <div class="animate my-10 space-y-1">
+      <div class="flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={review.data.date} />
+        </div>
+        &bull;
+        <div class="font-base text-sm">
+          {readingTime(review.body)}
+        </div>
+      </div>
+      <h1 class="text-3xl font-semibold text-black dark:text-white">
+        {review.data.title}
+      </h1>
+      {
+        (review.data.demoURL || review.data.repoURL) && (
+          <nav class="flex gap-1">
+            {review.data.demoURL && (
+              <Link href={review.data.demoURL} external>
+                demo
+              </Link>
+            )}
+            {review.data.demoURL && review.data.repoURL && <span>/</span>}
+            {review.data.repoURL && (
+              <Link href={review.data.repoURL} external>
+                repo
+              </Link>
+            )}
+          </nav>
+        )
+      }
+    </div>
+    <TableOfContents headings={headings} />
+    <article class="animate">
+      <Content />
+    </article>
+  </Container>
+</Layout>

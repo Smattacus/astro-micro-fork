@@ -5,7 +5,8 @@ export const SITE: Site = {
   DESCRIPTION: "This is a small blog for technical subjects: Python. SystemVerilog. Digital Signal Processing. Semiconductors. Etc.",
   EMAIL: "Smattacus@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
-  NUM_PROJECTS_ON_HOMEPAGE: 3,
+  NUM_PROJECTS_ON_HOMEPAGE: 2,
+  NUM_REVIEWS_ON_HOMEPAGE: 2,
 };
 
 export const HOME: Metadata = {
@@ -23,6 +24,11 @@ export const PROJECTS: Metadata = {
   DESCRIPTION:
     "Some projects I have done in the public realm in my spare time.",
 };
+
+export const REVIEWS: Metadata = {
+  TITLE: "Reviews",
+  DESCRIPTION: "Book reviews I have written."
+}
 
 export const SOCIALS: Socials = [
   {
